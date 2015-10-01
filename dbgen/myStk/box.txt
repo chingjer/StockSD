@@ -1,0 +1,21 @@
+CREATE TABLE box (
+  stockid varchar(10) , 
+  dte date ,
+  low1dte date , ##起漲日期
+  low1price double  default 0, ##起漲價格
+  highdte date , ##最高價日期
+  highprice double  default 0, ##最高價
+  udrate double  default 0, ##高點前漲幅
+  low2dte date , ##最低價日期
+  low2price double  default 0, ##最低價
+  boxwidth double  default 0, ##波幅
+  low1va10 double  default 0, ##起漲日10日均量
+  price double  default 0, ##目前價格
+  diff_bt double  default 0, ##距高點幅度
+  diff_bb double  default 0, ##距低點幅度
+  hdays int  default 0, ##距高點天數
+  ldays int  default 0, ##距低點天數
+  vol int  default 0, ##成交量
+  va5 int  default 0 ##5日均量
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

@@ -1,0 +1,16 @@
+CREATE TABLE randid (
+stockid varchar(10) , 
+num int  default 0, 
+dte date 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE randsel (
+stockid varchar(10) , 
+num int  default 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE goodstock (
+stockid varchar(10) , 
+num int  default 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

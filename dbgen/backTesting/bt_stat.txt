@@ -1,0 +1,16 @@
+CREATE TABLE bt_stat (##測試統計表
+sys varchar(10) not null DEFAULT '', ##系統名稱 P
+subsys varchar(30) not null DEFAULT '', ## 子系統名稱(如陰陽線型態) P
+num int not null default 0, ##參數組編號 P
+datecode varchar(1) ,##期間代號 P
+sel_recs int  default 0, ##初步篩選總筆數
+trade_recs int  default 0, ##交易筆數
+exp double  default 0, ##期望值
+exp_r double  default 0, ## R期望值
+exp_quater double  default 0, ## 季期望值
+avgdays double  default 0, ## 平均天數
+winning double  default 0, ## 勝率
+net_profit double  default 0, ## 總獲利
+PRIMARY KEY  (`sys`,`subsys`,`datecode`,`num`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

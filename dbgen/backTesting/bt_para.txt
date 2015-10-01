@@ -1,0 +1,32 @@
+CREATE TABLE bt_para (
+sys varchar(10) not null DEFAULT '', ##系統名稱 P
+subsys varchar(30) not null DEFAULT '', ## 子系統名稱(如陰陽線型態) P
+num int  default 0 NOT NULL,  ##參數組編號 P
+add_maxtimes varchar(10)  NOT NULL, 
+add_cri varchar(10)  NOT NULL, 
+sub_cri varchar(10)  NOT NULL, 
+max_lose varchar(10)  NOT NULL, 
+num_check varchar(10)  NOT NULL, 
+firststop_cri varchar(10)  NOT NULL, 
+maxdrop_cri varchar(10)  NOT NULL, 
+in_days varchar(10)  NOT NULL, 
+buy_mode varchar(10)  NOT NULL, 
+holddays_cri varchar(10)  NOT NULL, 
+min_profit varchar(10)  NOT NULL, 
+chg_cri varchar(10)  NOT NULL, 
+stop_ma varchar(10)  NOT NULL, 
+filt_ma varchar(10)  NOT NULL, ##之前為固定欄位
+p14 varchar(10)  NOT NULL, 
+p15 varchar(10)  NOT NULL, 
+p16 varchar(10)  NOT NULL, 
+p17 varchar(10)  NOT NULL, 
+p18 varchar(10)  NOT NULL, 
+p19 varchar(10)  NOT NULL, 
+p20 varchar(10)  NOT NULL, 
+p21 varchar(10)  NOT NULL, 
+p22 varchar(10)  NOT NULL, 
+p23 varchar(10)  NOT NULL, 
+p24 varchar(10)  NOT NULL, 
+p25 varchar(10)  NOT NULL 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

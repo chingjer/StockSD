@@ -1,0 +1,1 @@
+C:\xampp\php\phpdoc.bat --parseprivate -o HTML:frames:earthli -f C:\stockSD\phpLib\HGrid.php -t c:\temp\docs

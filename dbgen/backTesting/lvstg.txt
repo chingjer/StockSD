@@ -1,0 +1,17 @@
+CREATE TABLE lvstg (
+stockid varchar(10) , 
+dte date , 
+price double , 
+datecode varchar(1) , 
+profit double  default 0, 
+isclose BOOL , 
+p_buy double  default 0, 
+buydate date , 
+p_stop double  default 0, 
+stopdate date , 
+days int  default 0, 
+times int  default 0, 
+indays int  default 0, 
+remark varchar(50) 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

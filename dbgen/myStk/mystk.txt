@@ -1,0 +1,16 @@
+CREATE TABLE mystk (
+  id bigint(20) unsigned NOT NULL, ## 自動遞增識別碼 
+  account varchar(10) , ##帳戶代號
+  catgry char(1), ##資券,'F'-finance 融資,'B'-bearish 融券,'N'-一般 
+  stockid varchar(10) , 
+  in_date date , ##買進/放空日期
+  in_price double  default 0, ## 價格
+  qty double  default 0, ##數量
+  out_date date , ##賣出/回補日期
+  out_price double  default 0, ##賣出/回補價格
+  stp_price double  default 0,  ## 預設出場價格
+  mthd char(1), ## 操作模式代號
+  rmk_in varchar(255), ##進場說明
+  rmk_out varchar(255) ##出場說明
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

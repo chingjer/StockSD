@@ -1,0 +1,4 @@
+CREATE TABLE stop_date (
+is_bear varchar(1) , 
+dte date 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

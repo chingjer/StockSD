@@ -1,0 +1,8 @@
+CREATE TABLE test_period (
+datecode varchar(1) , 
+begdate varchar(10) , 
+enddate varchar(10) , 
+enabled varchar(1) , 
+rmk varchar(50) 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

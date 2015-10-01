@@ -1,0 +1,48 @@
+﻿h1 {
+	font-size: 20px;
+	color: #FF6600;
+	font-weight: bold;
+}
+h2 {
+	font-size: 18px;
+	color: #800000;
+	font-weight: bold;
+}
+h3 {
+	font-size: 16px;
+	color: #008000;
+	font-weight: bold;
+}
+ul {
+	list-style-type: square;
+}
+a {
+	color: #808000;
+	font-size: inherit;
+}
+a:hover {
+	color: #FF0000;
+	font-size: inherit;
+	text-decoration: underline;
+}
+blockquote {
+	margin-left: 40px;
+	margin-top: 10px;
+}
+body {
+	font-size: medium;
+}
+table {
+	border: 1px solid #666666;
+	font-size: small;
+}
+th {
+	border: 1px solid #666666;
+        background-color:#c0c0c0;
+}
+td {
+	border: 1px solid #666666;
+}
+ol {
+	list-style-type: decimal;
+}

@@ -1,0 +1,11 @@
+<table style="border: 1px solid #0000ff;">
+<tr><td style="width:600px;border:none;font-size: large">
+<label for="sm_stockid">股票代號: </label>
+<input type=text name='sm_stockid' id='sm_stockid' size=10 value='$stockid' 
+        onkeyup="doCompletion('sm_stockid','sm_stockid_sel', 'sm_stockid_show','ajaxIdSelSvr.php')" 
+        onchange="doShowName('sm_stockid','sm_stockid_sel', 'sm_stockid_show','ajaxIdSelSvr.php')"> 
+<span id="sm_stockid_show" style="displa:inline">直接打入代碼，或部分中文+空白叫出選單
+</span>
+<select name="sm_stockid_sel" id="sm_stockid_sel" size="1" style="display: none" onchange="doSelChange('sm_stockid','sm_stockid_sel','sm_stockid_show' )">
+</select> <td  style="width:100px;border:none;font-size: large">
+<button id='sm_btn'>查詢</button></tr></table><P>

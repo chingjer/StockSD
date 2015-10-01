@@ -1,0 +1,12 @@
+select count(*)
+from divergence d inner join stk s on d.stockid = s.stockid and d.dte = s.dte 
+where d.typ='+' and d.idx = 'rsi6' and  s.percentb < 0.3 
+and rsi6 > rsi12 and kdk > kdd and sc_kdk > 0 and sc_kdd > 0 
+and d.dte between '2014-1-1' and '2014-12-31' order by stockid,dte
+
+select count(*)
+from divergence d inner join stk s on d.stockid = s.stockid and d.dte = s.dte 
+where d.typ='+' and d.idx = 'rsi6' and  s.percentb < 0.3 
+and mfi > 70
+and d.dte between '2014-1-1' and '2014-12-31' order by stockid,dte
+

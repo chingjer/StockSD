@@ -1,0 +1,14 @@
+CREATE TABLE lvstg_stat (
+paranum int  default 0, 
+trade_recs int  default 0, 
+exp double  default 0, 
+net_profit double  default 0, 
+exp_r double  default 0, 
+winning double  default 0, 
+avgdays double  default 0, 
+exp_quater double  default 0, 
+begdate date , 
+datecode varchar(1) , 
+sel_recs int  default 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

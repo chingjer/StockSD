@@ -1,0 +1,10 @@
+CREATE TABLE tppii ( ## Three Primary Professional Investment Institutions
+  stockid varchar(10) , 
+  dte date ,
+  typ varchar(1), ##類別，T=TWSE, G=GreTai
+  a_qty double default 0, ##外資淨買超
+  b_qty double  default 0, ##投信淨買超
+  c_qty double  default 0, ##自營淨買超
+  tot_qty double  default 0 ##三大法人淨買超
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

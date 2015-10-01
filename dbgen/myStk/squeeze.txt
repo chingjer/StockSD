@@ -1,0 +1,19 @@
+CREATE TABLE squeeze (
+  stockid varchar(50) , 
+  dte date , ##選股日期
+  minbw double , ##最小帶寬
+  minbw_dte date ,
+  sqdays double , ##壓縮天數
+  bandwidth double , ##帶寬
+  vol double , ##成交量
+  va5 double, ##5日均量
+  va10 double , ##10日均量
+  updown double , ##漲跌%
+  price double , 
+  ub double , ##上緣
+  percentb double , ## % b
+  sc_osc double , 
+  mfi double , 
+  ptbrsi12 double  ## %b(rsi12)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

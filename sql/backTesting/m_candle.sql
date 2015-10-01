@@ -1,0 +1,1 @@
+delete from candle where sys='candle' and subsys<>'+貫穿線'

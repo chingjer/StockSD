@@ -1,0 +1,13 @@
+CREATE TABLE stkid (
+  stockid varchar(10) , ## 股票代號
+  stkname varchar(20) , ## 股票名稱
+  cl varchar(50) , ## class, 1=上市, 2=上櫃
+  minbw_dte date ,  ## 產生最小帶寬日期
+  minbw double  default 0, ## minum bandwith
+  sqdays int  default 0, ## squeeze days 壓縮日期
+  price double  default 0, ## 最近收盤
+  dte date , ## 最近日期
+  rmk varchar(255) , ## remark
+  flgbasic varchar(1) ## 處理月、季報時處理過程記錄
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

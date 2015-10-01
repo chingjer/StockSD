@@ -1,0 +1,60 @@
+CREATE TABLE stk (
+  stockid varchar(10) , ## 股票代號
+  dte date , ## 日期
+  p_open double , ## 開盤
+  p_high double , ## 高點
+  p_low double ,  ## 低點
+  price double ,  ## 收盤
+  vol double ,  ## 成交量
+  updown double , ## 漲跌幅
+  ma5 double , 
+  ma10 double , 
+  ma20 double , ## 20日均線
+  ma60 double , ## 60日均線
+  ma120 double , ## 120日均線
+  ma240 double , ## 240日均線
+  ma200 double , ## 200日均線
+  va5 int , ## 5日均量
+  va10 int , ## 10日均量
+  va20 int , ## 20日均量
+  stddev20 double , ## 20日標準差，用來計算BollingerBands
+  ub double , ## upper band 帶狀上緣
+  lb double , ## lower band 帶狀下緣
+  percentb double , ## %b, 包寧傑帶狀指標
+  bandwidth double , ## 帶狀寬度
+  kdk double , ## KD9_K
+  kdd double , ## KD9_D
+  sc_kdk int , 
+  sc_kdd int , 
+  dif double , ## MACD(12,26,9)''s dif
+  macd double , 
+  osc double ,
+  sc_osc int , 
+  ent12 double , ## 計算macd需前一天ent,En_t = En_[t-1] + 2/(1+n)*(P_t – En_[t-1])
+  ent26 double , ## 同上
+  mfi double , ## MFI14
+  ptbmfi double , ## %b(mfi) 請參考「http://jesse0606.pixnet.net/blog/post/37709556」
+  sc_mfi int , 
+  sc_ma10 int , ## ma10升降天數(max 10)，如+10為上升>=10天，-10為下降>=10天，0剛好由正轉負或反之
+  sc_ma20 int , 
+  sc_ma60 int , 
+  sc_ma120 int , 
+  ud200 varchar(1) , ## ma200方向，U=UP,D=DOWN
+  rsi6 double , ## RSI6
+  ptbrsi6 double , ## %b(rsi6)
+  rsi12 double , ## RSI12 
+  ptbrsi12 double , ## %b(rsi12)
+  emau6 double , ## RSI計算需要 
+  emad6 double , 
+  emau12 double , 
+  emad12 double , 
+  di_p double , ## dmi 計算使用，請參考 「http://jesse0606.pixnet.net/blog/post/32688093」
+  di_m double , ## dmi 計算使用
+  adx double , ## dmi 計算使用
+  tr double , ## dmi 計算使用
+  dm_p double , ## dmi 計算使用
+  dm_m double , ## dmi 計算使用
+  sc_adx int , ## dmi 計算使用
+  ptbadx double ,  ## %b(adx)
+  dif_adx double ## dif 與 adx 之差
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -1,0 +1,38 @@
+<body><form name="mystk_form" id="mystk_form"><TABLE cellpadding='3' cellspacing='0' border='1' width=800px>
+<TR>
+<TD style="width: 99px"><label for='ID'>識別碼</label><TD style="width: 197px"><input type=text name='ID' id='ID' size=10 disabled>
+<TD style="width: 99px"><label for='catgry'>資券</label>
+<TD style="width: 198px">
+<input name="catgry" type="radio" value="N" />一般
+<input name="catgry" type="radio" value="F" />融資
+<input name="catgry" type="radio" value="B" />融券
+</TR>
+<TR>
+<TD style="width: 80px"><label for='account'>帳號</label><TD style="width: 197px"><input type=text name='account' id='account' size=10 value="001" >
+<TD style="width: 99px"><label for='mthd'>交易模式</label>
+<TD style="width: 198px">[SELECT]id=mthd&table=mthd&option=spec&value=mthd[/SELECT]
+</TR>
+<TR>
+<TD style="width: 80px"><label for='stockid'>股票代號</label>
+<TD COLSPAN="3">[IDSEL]id=stockid&svr=ajaxIdSelSvr.php[/IDSEL]
+</TR>
+<TR>
+<TD style="width: 99px"><label for='in_date'>進場日</label><TD style="width: 197px"><input type=text name='in_date' id='in_date' size=10 class='datepicker'>
+<TD style="width: 80px"><label for='in_price'>進場價</label><TD><input type=text name='in_price' id='in_price' size=10 class='double' required>
+</TR>
+<TR>
+<TD style="width: 99px"><label for='qty'>數量</label><TD style="width: 198px"><input type=text name='qty' id='qty' size=10 class='integer' value="1">
+<TD style="width: 80px"><label for='stp_price'>停損價</label><TD style="width: 197px"><input type=text name='stp_price' id='stp_price' size=10 class='double'>
+</TR>
+<TR>
+<TD style="width: 80px" ><label for='rmk_in'>進場說明</label>
+<TD colspan="3" style="width: 197px"><textarea name="rmk_in" id='rmk_in' cols="80" rows="1"></textarea>
+</TR>
+<TR>
+<TD style="width: 80px"><label for='out_date'>出場日</label><TD style="width: 197px"><input type=text name='out_date' id='out_date' size=10 class='datepicker'>
+<TD style="width: 99px"><label for='out_price'>出場價</label><TD style="width: 198px"><input type=text name='out_price' id='out_price' size=10 class='double'>
+</TR>
+<TR>
+<TD style="width: 99px" ><label for='rmk_out'>出場說明</label
+><TD colspan="3" style="width: 197px"><textarea name="rmk_out" id='rmk_out' cols="80" rows="1"></textarea></TR>
+</TABLE></form></body>

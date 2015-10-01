@@ -1,0 +1,32 @@
+CREATE TABLE tppii_sum ( ## Three Primary Professional Investment Institutions
+  stockid varchar(10) , 
+  dte date ,
+  t1 int  default 0, ##t=猭,a=戈,b=щ獺,c=犁
+  t5 int  default 0, ##5ぱ
+  t20 int  default 0, ##20ぱ
+  t5b int  default 0, ##5ぱ禦禬ぱ计
+  t5s int  default 0, ##5ぱ芥禬ぱ计
+  t20b int  default 0, ##20ぱ禦禬ぱ计
+  t20s int  default 0, ##20ぱ芥禬ぱ计
+  a1 int  default 0, 
+  a5 int  default 0, 
+  a20 int  default 0,
+  a5b int  default 0,
+  a5s int  default 0,
+  a20b int  default 0,
+  a20s int  default 0,
+  b1 int  default 0, 
+  b5 int  default 0, 
+  b20 int  default 0,
+  b5b int  default 0,
+  b5s int  default 0,
+  b20b int  default 0,
+  b20s int  default 0,
+  c1 int  default 0, 
+  c5 int  default 0, 
+  c20 int  default 0,
+  c5b int  default 0,
+  c5s int  default 0,
+  c20b int  default 0,
+  c20s int  default 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

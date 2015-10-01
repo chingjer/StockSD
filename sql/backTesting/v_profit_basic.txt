@@ -1,0 +1,7 @@
+select d.stockid, i.stkname, d.dte, d.profit,b.qt,
+QEG_1 AS `103.4Q`, QEG_2 AS `103.3Q` ,  QEG_3 AS `103.2Q` ,  QEG_4  AS `103.1Q`,  
+QEG_5  AS `102.4Q`,  QEG_6  AS `102.3Q`,  QEG_7  AS `102.2Q` ,  QEG_8  AS `102.1Q`
+ from lvstg d inner join stkid i on d.stockid = i.stockid
+inner join stkbasic b on d.stockid = b.stockid
+where d.p_stop > 0 and d.datecode='M'
+order by d.profit 

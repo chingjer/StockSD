@@ -1,0 +1,37 @@
+<script>
+      $(document).ready(function(){
+      show_jMenu($("#jMenu")); 
+  });
+</script>
+</head>
+<body>
+<ul id="jMenu">
+  <li><a>系統設定</a>
+    <ul>
+        <li><a>測試期間設定</a>
+        <li><a>測試期間圖示</a>
+        <li><a>交易系統代號</a>
+        <li><a>K線型態代號</a>
+        <li><a href="BTParaName.php">交易系統登錄</a>
+      </ul>
+  <li><a>測試結果</a>
+      <ul>
+          <li><a href="BTShow.php?SYS=candle">陰陽線</a>
+          <li><a href="BTShow.php?SYS=lvstg">大量強勢股(lvstg)</a>
+          <li><a href="BTShow.php?SYS=bbbro">價格波動率突破(bbbro)</a>
+          <li><a href="BTShow.php?SYS=ebox">箱型系統(ebox)</a>
+          <li><a href="BTShow.php?SYS=dbox">箱型放空系統(dbox)</a>
+          <li><a href="BTShow.php?SYS=bears">空頭候選股</a>
+          <li><a href="BTShow.php?SYS=bbrev">BB底部反轉系統</a>
+          <li><a href="BTShow.php?SYS=bbdrev">BB頭部反轉系統</a>
+          <li><a href="BTShow.php?SYS=dvgn">多頭背離系統</a>
+          <li><a href="BTShow.php?SYS=dvgn_bear">空頭背離系統</a>
+          <li><a href="BTShow.php?SYS=bear5lay">五雷轟頂系統</a>
+      </ul>
+  <li><a>陰陽線測試</a>
+      <ul>
+          <li><a>多頭母子</a>
+          <li><a>空頭母子</a>
+      </ul>
+</ul>
+ 

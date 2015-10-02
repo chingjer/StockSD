@@ -13,6 +13,6 @@ select m.id as `識別碼`, m.account as `帳戶`,
   CONCAT(m.mthd,t.spec,'(',t.HOLDDAYS,')') as `模式`
   from mystk m 
   inner join stkid i on m.stockid = i.stockid
-  inner join stk s on s.stockid = i.stockid and s.dte = i.dte
+  inner join stk s on s.stockid = i.stockid and s.dte = m.in_date
   left join mthd t on m.mthd = t.mthd
   

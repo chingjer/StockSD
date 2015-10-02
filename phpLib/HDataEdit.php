@@ -24,9 +24,12 @@ class HDataEdit {
     }
 
     function getPos($label, $s1, $aPos) {
-        if (!defined('_START')) define("_START", 0);
-        if (!defined('_END')) define("_END", 1);
-        if (!defined('_LENGTH')) define("_LENGTH", 2);
+        if (!defined('_START'))
+            define("_START", 0);
+        if (!defined('_END'))
+            define("_END", 1);
+        if (!defined('_LENGTH'))
+            define("_LENGTH", 2);
         // [IDSEL]'s $ending is [/IDSEL]
         $ending = sprintf("%s/%s", substr($label, 0, 1), substr($label, 1));
         $offset = $aPos[1] + 1;
@@ -90,10 +93,10 @@ class HDataEdit {
         //echo $s1;
         return $s1;
     }
-        protected function getColumnName($ix,$fld){
-            return $fld->name;            
-        }
-    
+
+    protected function getColumnName($ix, $fld) {
+        return $fld->name;
+    }
 
     /**
      * 根據 query 後的 result，產生輸入畫面
@@ -107,61 +110,63 @@ class HDataEdit {
         $s1 = sprintf("<body><form name='%s_form' id='%s_form'>\n" .
                 "<TABLE cellpadding='3' cellspacing='0' border='0'>\n", $this->tbl, $this->tbl);
         $s2 = "";
-        $i=0;
+        $i = 0;
         foreach ($finfo as $v) {
             if ($i % $cols == 0) {
                 $s2 .= "</TR><TR>\n";
             }
             $label = $this->getColumnName($i, $v);
-            $s2 .= sprintf("<TD><label for='%s'>%s</label><TD>", 
-                    $v->name,$label);
-            switch($v->type){
-            case 10://date
-                $sClass = "class='datepicker'";
-                break;
-            case 1://tiny
-            case 2://short
-            case 3://long
-            case 9://int24
-                $sClass = "class='integer'";
-                break;
-            case 4://float
-            case 5://double
-                $sClass = "class='double'";
-                break;
-            default:
-                $sClass = "";
+            $s2 .= sprintf("<TD><label for='%s'>%s</label><TD>", $v->name, $label);
+            switch ($v->type) {
+                case 10://date
+                    $sClass = "class='datepicker'";
+                    break;
+                case 1://tiny
+                case 2://short
+                case 3://long
+                case 9://int24
+                    $sClass = "class='integer'";
+                    break;
+                case 4://float
+                case 5://double
+                    $sClass = "class='double'";
+                    break;
+                default:
+                    $sClass = "";
             }//switch
-            if ($v->flags & 512){//AUTO_INCREMENT_FLAG
+            if ($v->flags & 512) {//AUTO_INCREMENT_FLAG
                 $flags = "disabled";
-            }else if ($v->flags & 2){//primary key
+            } else if ($v->flags & 2) {//primary key
                 $flags = "readonly required";
-            }else{
+            } else {
                 $flags = "";
             }
-            $len = ceil($v->length/3);
-            $s2 .= sprintf("<input type=text name='%s' id='%s' size=%d maxlength=%d %s %s >\n",
-                    $v->name,$v->name, $len,$len, $sClass,$flags);
+            if ($v->type == 10){//date
+                $len = 10;
+            }else{
+                $len = ceil($v->length / 3);
+            }
+            $s2 .= sprintf("<input type=text name='%s' id='%s' size=%d maxlength=%d %s %s >\n", $v->name, $v->name, $len, $len, $sClass, $flags);
             $i++;
-
         }//for
-        $s2 = substr($s2,5);
+        $s2 = substr($s2, 5);
         $s1 .= $s2 . "</TR>\n</TABLE></form>";
         echo $s1;
         $this->showCtrl();
         $this->debugHtml($s1);
-        
+
         echo "</body>";
     }
+
     /**
      * show HTML to debug
      * @param String $s1
      */
-    function debugHtml($s1){
+    function debugHtml($s1) {
         echo "<p>===== HTML DEBUG =====</p>";
-        $s2 = str_replace("<","&lt;",$s1);
-        $s2 = str_replace(">","&gt;",$s2);
-        $s2 = str_replace("\n","<BR>",$s2);
+        $s2 = str_replace("<", "&lt;", $s1);
+        $s2 = str_replace(">", "&gt;", $s2);
+        $s2 = str_replace("\n", "<BR>", $s2);
         echo $s2;
     }
 
@@ -211,6 +216,10 @@ CTRL;
         echo "";
     }
 
+    /**
+     * 將資料庫記錄內容放入於HTML的{DATA]...[/DATA]區段中傳給前端後顯示相關欄位的內容
+     * @param mixed $row: row of fetch_array()
+     */
     function loadData($row) {
         $fldname = array_keys($row);
         $s = "";
@@ -269,6 +278,16 @@ CTRL;
             $s1 .= sprintf("AND %s='%s' ", $keys[$i], urldecode($kvs[$fldnm]));
         }
         return substr($s1, 4);
+    }
+    /**
+     * 取得適合在前端顯示欄位資料的內容，如 "account\n=001\n"<br>
+     * 表示在前端的account欄位(DOM id)賦予值為"001"的內容
+     * @param string $k
+     * @param string $v
+     * @return string
+     */
+    function getKeyVal($k,$v){
+        return strtolower($k) . "\n=\n" . $v . "\n&\n";
     }
 
     function genUpdateSql($kvs, $sWhere) {

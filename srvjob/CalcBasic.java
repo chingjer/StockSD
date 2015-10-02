@@ -15,6 +15,7 @@ public final class CalcBasic {
     ResultSet rslt;
     double currPrice;
     int nVal; //價值分數
+    boolean isDebug = false;
 
     CalcBasic() throws SQLException {
         isAll = false;
@@ -294,6 +295,7 @@ public final class CalcBasic {
         
         System.out.println("***** calc_YearOnce()　*****");
 
+        stmt = oStk.conn.createStatement();
         stmt.executeUpdate("update stkbasic set reinv_rate4=NULL,roe5=NULL,roe_sc=NULL,qeg_sc=NULL");
         stmt2 = oStk.conn.createStatement(
                 ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -307,39 +309,40 @@ public final class CalcBasic {
                     break;
                 }
             }//for
-            if (!isValid) {
-                continue;
+            if (isValid) {
+                /* ----- 計算盈再率
+                 n1 = rs("長期投資_1") + rs("固定資產_1") - rs("長期投資_5") - rs("固定資產_5")
+                 n2 = rs("稅後淨利_1") + rs("稅後淨利_2") + rs("稅後淨利_3") + rs("稅後淨利_4")
+                 */
+                n1 = 0;
+                n2 = 0;
+                for (i = 0; i < 4; i++) {
+                    n1 += nn[i];
+                }
+                for (i = 4; i < 8; i++) {
+                    n2 += nn[i];
+                }
+                if (n2 != 0) {
+                    n3 = Double.parseDouble(String.format("%.1f", n1 / n2 * 100));
+                } else {
+                    n3 = 999d;
+                }
+                rs2.updateDouble("reinv_rate4", n3);//四年盈再率
             }
-            /* ----- 計算盈再率
-             n1 = rs("長期投資_1") + rs("固定資產_1") - rs("長期投資_5") - rs("固定資產_5")
-             n2 = rs("稅後淨利_1") + rs("稅後淨利_2") + rs("稅後淨利_3") + rs("稅後淨利_4")
-             */
-            n1 = 0;
-            n2 = 0;
-            for (i = 0; i < 4; i++) {
-                n1 += nn[i];
-            }
-            for (i = 4; i < 8; i++) {
-                n2 += nn[i];
-            }
-            if (n2 != 0) {
-                n3 = Double.parseDouble(String.format("%.1f", n1 / n2 * 100));
-            } else {
-                n3 = 999d;
-            }
-            rs2.updateDouble("reinv_rate4", n3);//四年盈再率
-
             // -----計算五年ROE平均
             n1 = 0;
-            for (i = 1; i < 5; i++) {
+            for (i = 1; i <= 5; i++) {
                 n1 += rs2.getDouble("roe_" + i);
+                if (isDebug && rs2.getString("stockid").equals("5388")){
+                    System.out.printf("n1=%.1f",n1/5d );
+                }
             }
             rs2.updateDouble("roe5",
-                    Double.parseDouble(String.format("%.1f", n1 / 5)));
+                    Double.parseDouble(String.format("%.1f", n1 / 5d)));
 
             // ----- 計算ROE_SC,ROE的品質，roe_1是最近一年 
             i2 = 0;
-            for (i = 1; i < 5; i++) {
+            for (i = 1; i <= 5; i++) {
                 if (nn[i + ROE_POS] == 0) { //下一個ROE,=( i+ ROE_POS-1 +1)
                     n4 = 0;
                 } else {
@@ -351,7 +354,7 @@ public final class CalcBasic {
                     i2 += 1;
                 }
             }
-            rs2.updateInt("roe5", i2);//roe品質
+            rs2.updateInt("roe_sc", i2);//roe品質
 
             // ----- 計算qeg_sc 獲利成長品質            
             i2 = 0;
@@ -399,10 +402,11 @@ public final class CalcBasic {
             if (args.length > 0 && args[0].equals("Y")) {
                 oo.isAll = true;
             }
-            oo.calc_maxmin();
-            oo.calc_stockValueIndex();
+            oo.isDebug = false;
+            if (!oo.isDebug) oo.calc_maxmin();
+            if (!oo.isDebug) oo.calc_stockValueIndex();
             oo.calc_YearOnce();
-            oo.backupTodayStk();
+            if (!oo.isDebug) oo.backupTodayStk();
             System.out.println("\r\n***** CalcBasic() Done! *****");
         } catch (SQLException e) {
             System.err.println("*** SQL Error ***");

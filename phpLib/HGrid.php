@@ -22,6 +22,9 @@ class HGrid extends SimpleGrid {
         $this->isAdd = true;
     }
 
+    public function setISAdd($b){
+        $this->isAdd = $b;
+    } 
     public function setPage($n) {
         $this->old_page = $this->page;
         $this->page = $n;
@@ -148,8 +151,8 @@ STYLE;
         $this->detailId = $id;
         if ($id == "")
             $this->isAdd = false;
-        else
-            $this -> isAdd = true;
+        //else
+        //    $this -> isAdd = true;
     }
 
     public function getDetailId() {
